@@ -1,12 +1,11 @@
 import React, {CSSProperties, useEffect, useRef, useState} from 'react';
 import {Form} from 'react-bootstrap';
 import {UseFormRegister} from 'react-hook-form';
-import {useOutsideAlerter} from '../../../utils/hooks/useOutsideAlerter';
 import TimeValue from './timePicker/timeValue';
-import {getWindowDimensions} from '../../../helper/commonHelper';
 import {EMPTY} from "../models/enums";
-import {translateToText} from "../../reservation/helper";
-import ModalWrapper from "../../../common/components/wrapper/modalWrapper";
+import {getWindowDimensions, translateToText} from "../helper";
+import {useOutsideAlerter} from "../hooks/useOutsideAlerter.ts";
+
 
 interface ComponentProps {
     label?: string | null,
@@ -146,7 +145,7 @@ const FormTimePicker: React.FC<ComponentProps> = ({
                     <TimeValue
                         value={values.hour}
                         maxValue={23}
-                        setValue={(value: number, uptik: number) => {
+                        setValue={(value: number) => {
                             const newValue = {
                                 ...values,
                                 hour: value

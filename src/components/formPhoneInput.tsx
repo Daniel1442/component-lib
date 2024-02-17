@@ -28,9 +28,6 @@ const FormPhoneInput: React.FC<ComponentProps> = ({
                                                       required = false,
                                                       disabled = false,
                                                       value,
-                                                      type = 'text',
-                                                      onChange,
-                                                      textAlign,
                                                       setValue,
                                                       trigger
                                                   }) => {
@@ -48,7 +45,7 @@ const FormPhoneInput: React.FC<ComponentProps> = ({
     }, [value])
 
 
-    const handleOnChange = (val: any, data: any, event: any, formattedValue: any) => {
+    const handleOnChange = (val: any, data: any) => {
 
         if (val === data.dialCode) {
             setValue(identificator, undefined)

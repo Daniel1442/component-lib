@@ -26,20 +26,24 @@ const FormTextArea: React.FC<ComponentProps> = ({
                                                     rows = 3,
                                                     disabled = false
                                                 }) => {
+
+    // Extracted constant
+    const LABEL_CLASS = 'mb-2';
+    const FEEDBACK_CLASS = 'invalid-feedback';
+
     return <>
-        <label className={'mb-2'}>{label} {required && <span className="text-danger">*</span>}</label>
+        <label className={LABEL_CLASS}>{label} {required && <span className="text-danger">*</span>}</label>
         <Form.Control as={'textarea'}
                       rows={rows}
                       placeholder={EMPTY}
                       {...register ? register(identificator) : null}
                       defaultValue={value as string | undefined}
                       disabled={disabled}/>
-        {error && (
-            <div className={'invalid-feedback'} style={error ? {display: 'block'} : {}}>
-                {error?.message}
+        {error ? (
+            <div className={FEEDBACK_CLASS} style={{display: 'block'}}>
+                {error.message} {/*use optional chaining*/}
             </div>
-        )}
-        {!error && (
+        ) : (
             <div className="form-text text-muted">{hint}</div>
         )}
     </>;

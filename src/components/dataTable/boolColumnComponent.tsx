@@ -7,7 +7,8 @@ interface ComponentProps {
 
 const BoolColumnComponent: React.FC<ComponentProps> = ({
                                                            value,
-                                                           onClick, children
+                                                           onClick,
+                                                           children
                                                        }) => {
 
     return <div className={'justify-content-center'}

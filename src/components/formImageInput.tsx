@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {UseFormRegister} from 'react-hook-form';
 import {Form} from 'react-bootstrap';
-import {useConfiguration} from '../../../configuration/useConfiguration';
 import {EMPTY} from "../models/enums";
 
 interface ComponentProps {
@@ -33,9 +32,8 @@ const FormImageInput: React.FC<ComponentProps> = ({
 
                                                   }) => {
     const [selectedFile, setSelectedFile] = useState<File | undefined>()
-    const [preview, setPreview] = useState<string | undefined>()
-    const [onHover, setOnHover] = useState(false);
-    const {cdnUrl} = useConfiguration();
+    const [, setPreview] = useState<string | undefined>()
+    const [, setOnHover] = useState(false);
 
     const selectFile = (e: any) => {
 
@@ -54,19 +52,6 @@ const FormImageInput: React.FC<ComponentProps> = ({
             reader.onload = () => resolve(reader.result);
         });
     }
-
-    const getImagePreview = (): string => {
-        if (preview) {
-            return preview;
-        }
-
-        if (value) {
-            return `${cdnUrl}${value}`;
-        }
-
-        return '';
-    }
-
     useEffect(() => {
         if (!selectedFile) {
             setPreview(undefined)
@@ -81,9 +66,10 @@ const FormImageInput: React.FC<ComponentProps> = ({
 
     return <>
         <label className={'mb-2'}>{label} {required && <span className="text-danger">*</span>}</label>
-        <div className={'position-relative  form-control overflow-hidden d-flex justify-content-between align-items-center'}
-             onMouseEnter={() => setOnHover(true)}
-             onMouseLeave={() => setOnHover(false)}>
+        <div
+            className={'position-relative  form-control overflow-hidden d-flex justify-content-between align-items-center'}
+            onMouseEnter={() => setOnHover(true)}
+            onMouseLeave={() => setOnHover(false)}>
             <div className={'btn btn-sm btn-success'}>Vložit obrázek</div>
             <input className={'position-absolute top-0 bottom-0 start-0 end-0 opacity-0'}
                    style={{zIndex: 999, cursor: 'pointer'}}

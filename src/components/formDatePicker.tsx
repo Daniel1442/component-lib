@@ -1,14 +1,14 @@
 import React, {CSSProperties, useEffect, useRef, useState} from 'react';
 import {Form} from 'react-bootstrap';
 import {UseFormRegister, UseFormSetValue} from 'react-hook-form';
-import {formatDate} from '../../../helper/dateHelper';
 import Calendar from 'react-calendar';
-import {useOutsideAlerter} from '../../../utils/hooks/useOutsideAlerter';
-import ClearCross from '../../../common/components/form/clearCross';
 import moment from 'moment';
-import {getWindowDimensions} from '../../../helper/commonHelper';
 import {EMPTY} from '../models/enums';
-import ModalWrapper from "../../../common/components/wrapper/modalWrapper";
+import {formatDate} from "../helper/dateHelper.ts";
+import {useOutsideAlerter} from "../hooks/useOutsideAlerter.ts";
+import {getWindowDimensions} from "../helper";
+import ClearCross from "./form/clearCross.tsx";
+import ModalWrapper from "./wrapper/modalWrapper.tsx";
 
 interface ComponentProps {
     label?: string | null,
@@ -48,7 +48,6 @@ const FormDatePicker: React.FC<ComponentProps> = ({
 
     const [showPicker, setShowPicker] = useState<boolean>(false);
     const [value, setValue] = useState<string>(date == null ? 'dd. MM. yyyy' : formatDate(date.toDateString(), 'dd. MM. yyyy') as string);
-    const [changeValue, setChangeValue] = useState<string | null>();
 
     // TODO HACK, pls better solution
     const ref = useRef<any>(null);
@@ -72,25 +71,6 @@ const FormDatePicker: React.FC<ComponentProps> = ({
         setFormDateValue(identificator, value)
 
     }, [disabled])
-
-    const computePosition = (): CSSProperties => {
-        if (ref.current === null) {
-            return {};
-        }
-
-        const location = ref.current.getBoundingClientRect();
-        const window = getWindowDimensions();
-        const absoluteHeight = location.top + 500;
-        if (window.height > absoluteHeight) {
-            return {}
-        }
-
-        if (window.height < 700) {
-            return {top: '30vh', position: 'fixed'}
-        }
-
-        return {bottom: '250px'};
-    };
 
     return <div key={identificator}>
 
