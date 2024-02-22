@@ -3,6 +3,7 @@ import React from 'react';
 interface ComponentProps {
     value: boolean | string
     onClick?: () => void
+    children: any
 }
 
 const BoolColumnComponent: React.FC<ComponentProps> = ({

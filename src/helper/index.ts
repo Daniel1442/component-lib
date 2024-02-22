@@ -1,4 +1,4 @@
-import {TimeValues} from "../components/formTimePicker.tsx";
+import {TimeValues} from "../components/form/formTimePicker/formTimePicker.tsx";
 
 export const translateToText = (val: TimeValues) => {
     return `${val.hour <= 9 ? '0' + val.hour : val.hour}:${val.minute <= 9 ? '0' + val.minute : val.minute}`;
