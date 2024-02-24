@@ -1,22 +1,24 @@
 name: publish on github
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
 
 jobs:
   publish-gpr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
           always-auth: true
-          node-version: 20
-          registry-url: https://registry.yarnpkg.com/
+          node-version: 18
+          registry-url: https://npm.pkg.github.com/
           scope: "@Daniel1442"
       - run: yarn install
-      - run: yarn build
+      - run: yarn run build
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
       - run: yarn publish
         env:
-          NODE_AUTH_TOKEN: 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
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
