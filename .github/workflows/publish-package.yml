@@ -18,7 +18,7 @@ jobs:
           scope: "@Daniel1442"
       - run: yarn install
       - run: yarn run build
-      - run: echo "//registry.npmjs.org/:_authToken=${{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}}" > ~/.npmrc
+      - run: echo "//registry.npmjs.org/:_authToken=${{ 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 }}" > ~/.npmrc
       - run: yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{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}}
+          NODE_AUTH_TOKEN: ${{ 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 }}
