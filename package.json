@@ -1,9 +1,16 @@
 {
   "name": "@Daniel1442/component-lib",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/Daniel1442"
+    "registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel1442/component-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Daniel1442/component-lib/issues"
+  },
+  "homepage": "https://github.com/Daniel1442/component-lib#readme",
   "type": "module",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
