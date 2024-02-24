@@ -16,9 +16,12 @@ jobs:
           always-auth: true
           registry-url: https://npm.pkg.github.com/
           scope: "@Daniel1442"
-      - run: yarn install
-      - run: yarn build
+      - run: yarn generate
+      - run: yarn build:bundle
       - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
       - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - run: yarn build
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
