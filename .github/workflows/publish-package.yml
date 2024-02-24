@@ -13,8 +13,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 18
+          always-auth: true
           registry-url: https://npm.pkg.github.com/
           scope: "@Daniel1442"
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
       - run: yarn install
       - run: yarn build
       - run: yarn publish
