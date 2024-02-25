@@ -1,7 +1,7 @@
 {
   "name": "@Daniel1442/component-lib",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.yarnpkg.com/"
   },
   "repository": {
     "type": "git",
