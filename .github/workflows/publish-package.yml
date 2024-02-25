@@ -19,4 +19,4 @@ jobs:
       - run: yarn run build
       - run: yarn publish
         env:
-          NODE_AUTH_TOKEN: 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
+          NODE_AUTH_TOKEN: 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
