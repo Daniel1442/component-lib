@@ -99,5 +99,6 @@
     "react-phone-input-2": "^2.15.1",
     "react-select": "^5.8.0",
     "ts-node": "10.2.1"
-  }
+  },
+  "version": "0.1.0"
 }
