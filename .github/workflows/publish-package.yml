@@ -13,10 +13,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: 'https://npm.pkg.github.com/'
           scope: "@Daniel1442"
       - run: yarn install
       - run: yarn run build
       - run: yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.TOKEN}}
